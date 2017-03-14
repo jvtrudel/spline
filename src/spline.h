@@ -454,6 +454,26 @@ double spline::deriv(int order, double x) const
     return interpol;
 }
 
+VectorXd Interp_spline(VectorXd X_input, VectorXd Y_input, VectorXd X_wanted)
+      {
+          vector<double> V_X_input(X_input.rows()), V_Y_input(Y_input.rows());
+          VectorXd Y_wanted(X_wanted.rows());
+
+          for (int i=0; i<X_input.rows();i++)
+          {
+              V_X_input[i] = X_input(i);
+              V_Y_input[i] = Y_input(i);
+          }
+
+          tk::spline s;
+          s.set_points(V_X_input,V_Y_input);
+
+          for (int i=0;i<X_wanted.rows();i++)
+          {
+              Y_wanted(i) = s(X_wanted(i));
+          }
+          return Y_wanted;
+      }
 
 
 } // namespace tk
