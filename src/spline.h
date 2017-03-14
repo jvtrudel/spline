@@ -32,6 +32,10 @@
 #include <vector>
 #include <algorithm>
 
+#include <Eigen/Dense>
+using namespace std;
+using Eigen::MatrixXd;
+using Eigen::VectorXd;
 
 // unnamed namespace only because the implementation is in this
 // header file and we don't want to export symbols to the obj files
